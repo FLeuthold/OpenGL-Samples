@@ -151,7 +151,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -161,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MapNamedBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

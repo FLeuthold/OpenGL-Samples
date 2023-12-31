@@ -1,3 +1,4 @@
+#define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <fstream>
@@ -5,9 +6,6 @@
 #include <sstream>
 #include <cmath>
 #include <iostream>
-
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
@@ -94,7 +92,7 @@ int main(void)
 
 
 	glEnable(GL_DEBUG_OUTPUT);
-	glDebugMessageCallback(errorOccurredGL, NULL);
+	//glDebugMessageCallback(errorOccurredGL, NULL);
 
 	{
 		GLuint          vao;
@@ -152,9 +150,11 @@ int main(void)
 		glNamedBufferStorage(buffer, sizeof(vertices), NULL, GL_MAP_WRITE_BIT | GL_DYNAMIC_STORAGE_BIT);//GL_DYNAMIC_STORAGE_BIT
 		glBindBuffer(GL_SHADER_STORAGE_BUFFER, buffer);
 
+		
+
 		void* ptr = glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_WRITE_ONLY);
-		memcpy(ptr, vertices, sizeof(vertices));
-		glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);//GL_ARRAY_BUFFER
+		memcpy(ptr, &vertices, sizeof(vertices));
+		glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
 
 		//Position
 		glVertexArrayAttribFormat(vao, 0, 4, GL_FLOAT, GL_FALSE, offsetof(vertex, x));
